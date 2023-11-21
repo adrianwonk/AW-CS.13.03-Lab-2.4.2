@@ -1,24 +1,44 @@
 import java.util.Arrays;
 
 public class CISStack {
+    Integer[] array;
+    int size;
+    int index;
+    public CISStack(int value){
+        array = new Integer[value];
+        int size = 0;
+        int index = 0;
+    }
 
-    // Array property.
+    public void push(int value){
+        array[index] = value;
+        index++;
+        size++;
+    }
 
-    // Size property.
-
-    // Pointer property
-
-    // Constructor.
-
-    // Push. This method pushes a value onto the top of the stack.
-
-    // Pop. This method pops a value from the top of the stack.
-
-    // isEmpty. Returns a boolean indicating whether the linked list is empty.
-
-    // size. Returns the size of the queue.
-
-    // toString. Returns a description of the queue in, for example, the following format:
-    // CISStack{stack=[7, 11], size=2, pointer=1}
+    public Object pop(){
+        if (size == 0)
+        {return null;}
+        int value = array[index-1];
+        array[index] = null;
+        index--;
+        size--;
+        return value;
+    }
+    public boolean isEmpty() {
+        return (size == 0);
+    }
+    public int size(){
+        return size;
+    }
+    public String toString(){
+        String result = "CISStack{stack=[";
+        for (int i = 0; i < array.length; i++){
+            result += "" + array[i] + ", ";
+        }
+        result = result.substring(0,result.length()-2);
+        result += "], size=" + size + ", pointer=" + (index - 1) + "}";
+        return result;
+    }
 
 }
